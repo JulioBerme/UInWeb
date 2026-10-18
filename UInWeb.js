@@ -2,7 +2,7 @@ function UInWeb_openWindow(id) {
   function UInWeb_centerWindow(windowEl) {    
       if (!windowEl) return
 
-      const parent = windowEl.closest('.client-area')
+      const parent = windowEl.closest('.client-area, .desktop')
       if (!parent) return;
 
       const parentWidth = parent.clientWidth;

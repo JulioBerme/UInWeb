@@ -15,7 +15,7 @@
         UInWeb_lockWindow('app-2')
 
         for(let i=0; i<100; i++) {
-          UInWeb_setProgressBar('app-2', 'Cargando devs...', i)
+          UInWeb_setProgressBar('app-2', 'Loading data...', i)
 
           await wait(100)
         }
@@ -37,7 +37,7 @@
   <body>
     <div class="desktop">
       
-      <div id="app-1" class="window closed" style="top: 20px; left: 20px; ">      
+      <div id="app-1" class="window closed" style="top: 100px; left: 100px; ">      
         <div class="title-bar">
           <div class="title-bar-icon">
             <span class="material-symbols-outlined">
@@ -88,7 +88,7 @@
         <div class="client-area">          
             <div id="devs-browser" class="window closed" style="width: 650px; height: 450px;">
               <div class="title-bar">
-                <div class="caption">Formulario</div>
+                <div class="caption">Data Viewer</div>
                 <div class="title-bar-button maximize"></div>
                 <div class="title-bar-button close"></div>
               </div>
@@ -100,46 +100,46 @@
                     </div>
                     <div class="layout-horizontal">
                       <table id="example-table" class="widget widget-datatables">
-                              <thead>
-                                  <tr>
-                                      <th>ID</th>
-                                      <th>Nombre</th>
-                                      <th>Cargo</th>
-                                      <th>Departamento</th>
-                                      <th>Estado</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                  <tr>
-                                      <td>001</td>
-                                      <td>Ana Gómez</td>
-                                      <td>Desarrolladora Frontend</td>
-                                      <td>Tecnología</td>
-                                      <td>Activo</td>
-                                  </tr>
-                                  <tr>
-                                      <td>002</td>
-                                      <td>Carlos Pérez</td>
-                                      <td>Diseñador UX/UI</td>
-                                      <td>Diseño</td>
-                                      <td>Activo</td>
-                                  </tr>
-                                  <tr>
-                                      <td>003</td>
-                                      <td>María Rodríguez</td>
-                                      <td>Gerente de Proyecto</td>
-                                      <td>Gestión</td>
-                                      <td>De vacaciones</td>
-                                  </tr>
-                                  <tr>
-                                      <td>004</td>
-                                      <td>Juan López</td>
-                                      <td>Especialista DevOps</td>
-                                      <td>Tecnología</td>
-                                      <td>Activo</td>
-                                  </tr>
-                              </tbody>
-                          </table>
+                          <thead>
+                              <tr>
+                                  <th>ID</th>
+                                  <th>Name</th>
+                                  <th>Position</th>
+                                  <th>Departamnt</th>
+                                  <th>State</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>001</td>
+                                  <td>Ana Gómez</td>
+                                  <td>Frontend Dev</td>
+                                  <td>Tech</td>
+                                  <td>Active</td>
+                              </tr>
+                              <tr>
+                                  <td>002</td>
+                                  <td>Carlos Pérez</td>
+                                  <td>Designer UX/UI</td>
+                                  <td>Design</td>
+                                  <td>Active</td>
+                              </tr>
+                              <tr>
+                                  <td>003</td>
+                                  <td>María Rodríguez</td>
+                                  <td>Proyect Manager</td>
+                                  <td>Management</td>
+                                  <td>Holydays</td>
+                              </tr>
+                              <tr>
+                                  <td>004</td>
+                                  <td>Juan López</td>
+                                  <td>DevOps</td>
+                                  <td>Tech</td>
+                                  <td>Active</td>
+                              </tr>
+                          </tbody>
+                      </table>
                     </div>
                     <div class="layout-horizontal" style="width: 100%; justify-content: flex-end !important;">
                       <button>Unused #1</button>
@@ -150,7 +150,7 @@
               </div>
             </div>          
             <div class="popups">
-              <div id="about-dialog"  class="window closed dialog" style="width: 250px; height: 140px;">
+              <div id="about-dialog"  class="window closed dialog" style="width: 300px; height: 200px;">
                 <div class="title-bar">
                   <div class="caption">About</div>
                 </div>
@@ -160,11 +160,11 @@
                       <div class="layout-horizontal">
                         UInWeb
                       </div>
-                      <div class="layout-horizontal">
-                        Library for develop HTML enterprise user interfaces like a desktop app.
+                      <div class="layout-horizontal" style="text-align: justify;">
+                        UInWeb is a minimalist library designed for developing HTML enterprise user interfaces that replicate the look, feel, and functionality of traditional desktop applications directly within the browser.
                       </div>                    
                       <div class="layout-horizontal">
-                        <button onclick="UInWeb_closeWindow('about-dialog')">Aceptar</button>
+                        <button onclick="UInWeb_closeWindow('about-dialog')">Acept</button>
                       </div>
                     </div>
                   </div>
@@ -188,7 +188,7 @@
             </span>
           </div>
           <div class="desktop-bar-shortcut-label">
-            App #1 
+            Wikipedia
           </div>
         </div>
         <div class="desktop-bar-shortcut" target="app-2">
@@ -198,7 +198,12 @@
             </span>
           </div>
           <div class="desktop-bar-shortcut-label">
-            App #2
+            <div>
+              Data              
+            </div>
+            <div>
+              Browser
+            </div>
           </div>          
         </div>
       </div>
