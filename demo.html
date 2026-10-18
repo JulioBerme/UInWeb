@@ -1,0 +1,207 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search,home" />
+    <link href="https://cdn.datatables.net/v/dt/dt-3.1.4/datatables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/v/dt/dt-3.1.4/datatables.min.js" ></script>    
+    <link rel="stylesheet" href="UInWeb.css" />
+    <script src="UInWeb.js"></script>
+    <script src="datatables.js"></script>
+    <script>
+      async function showDevs() {
+        const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        if(UInWeb_isWindowOpened('devs-browser')) return
+
+        UInWeb_lockWindow('app-2')
+
+        for(let i=0; i<100; i++) {
+          UInWeb_setProgressBar('app-2', 'Cargando devs...', i)
+
+          await wait(100)
+        }
+
+        UInWeb_setProgressBar('app-2')
+
+        UInWeb_unlockWindow('app-2')
+
+        UInWeb_openWindow('devs-browser')
+      }
+
+      document.addEventListener('click', () => {   
+        document.querySelector('#show-devs').addEventListener('click', async (e) => {
+          await showDevs()
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <div class="desktop">
+      
+      <div id="app-1" class="window closed" style="top: 20px; left: 20px; ">      
+        <div class="title-bar">
+          <div class="title-bar-icon">
+            <span class="material-symbols-outlined">
+              search
+            </span>
+          </div>
+          <div class="caption">Wikipedia</div>
+          <div class="title-bar-button maximize"></div>
+          <div class="title-bar-button close"></div>
+        </div>
+        <div class="client-area">
+          <iframe src="https://es.wikipedia.org/wiki/Wikipedia:Portada" style="width: 100%; height: 100%;"></iframe>
+        </div>
+      </div>
+      
+      <div id="app-2" class="window opened maximized" style="top: 10px; left: 10px; width: 500px; height: 500px;">
+        <div class="title-bar">
+          <div class="title-bar-icon ">
+            <span class="material-symbols-outlined">
+              home
+            </span>
+          </div>          
+          <div class="caption">Data Browser</div>
+          <div class="title-bar-button minimize"></div>
+          <div class="title-bar-button close"></div>
+        </div>
+        <div class="menu-bar">
+          <div class="menu-option">
+            Data
+            <div class="menu-box">
+              <div id="show-devs" class="menu-option">
+                Devs
+              </div>
+              <div class="menu-separator"></div>
+              <div class="menu-option disabled">Analistas</div>
+            </div>  
+          </div>        
+          <div class="menu-option">
+            Unused #1
+          </div>
+          <div class="menu-option">
+            Unused #2
+          </div>          
+          <div class="menu-option right" onclick="UInWeb_openWindow('about-dialog')">
+            About
+          </div>                      
+        </div>
+        <div class="client-area">          
+            <div id="devs-browser" class="window closed" style="width: 650px; height: 450px;">
+              <div class="title-bar">
+                <div class="caption">Formulario</div>
+                <div class="title-bar-button maximize"></div>
+                <div class="title-bar-button close"></div>
+              </div>
+              <div class="client-area">              
+                <div class="layout">
+                  <div class="layout-vertical">                    
+                    <div class="layout-horizontal">
+                      DEVS
+                    </div>
+                    <div class="layout-horizontal">
+                      <table id="example-table" class="widget widget-datatables">
+                              <thead>
+                                  <tr>
+                                      <th>ID</th>
+                                      <th>Nombre</th>
+                                      <th>Cargo</th>
+                                      <th>Departamento</th>
+                                      <th>Estado</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>001</td>
+                                      <td>Ana Gómez</td>
+                                      <td>Desarrolladora Frontend</td>
+                                      <td>Tecnología</td>
+                                      <td>Activo</td>
+                                  </tr>
+                                  <tr>
+                                      <td>002</td>
+                                      <td>Carlos Pérez</td>
+                                      <td>Diseñador UX/UI</td>
+                                      <td>Diseño</td>
+                                      <td>Activo</td>
+                                  </tr>
+                                  <tr>
+                                      <td>003</td>
+                                      <td>María Rodríguez</td>
+                                      <td>Gerente de Proyecto</td>
+                                      <td>Gestión</td>
+                                      <td>De vacaciones</td>
+                                  </tr>
+                                  <tr>
+                                      <td>004</td>
+                                      <td>Juan López</td>
+                                      <td>Especialista DevOps</td>
+                                      <td>Tecnología</td>
+                                      <td>Activo</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                    </div>
+                    <div class="layout-horizontal" style="width: 100%; justify-content: flex-end !important;">
+                      <button>Unused #1</button>
+                      <button>Unused #2</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>          
+            <div class="popups">
+              <div id="about-dialog"  class="window closed dialog" style="width: 250px; height: 140px;">
+                <div class="title-bar">
+                  <div class="caption">About</div>
+                </div>
+                <div class="client-area">              
+                  <div class="layout">
+                    <div class="layout-vertical">                    
+                      <div class="layout-horizontal">
+                        UInWeb
+                      </div>
+                      <div class="layout-horizontal">
+                        Library for develop HTML enterprise user interfaces like a desktop app.
+                      </div>                    
+                      <div class="layout-horizontal">
+                        <button onclick="UInWeb_closeWindow('about-dialog')">Aceptar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>          
+            </div>            
+        </div>
+        <div class="status-bar">
+            <div class="status-bar-message"></div>
+            <div class="status-bar-progess">
+              <span class="progess-text"></span>
+            </div>
+        </div>
+      </div>
+      
+      <div class="desktop-bar">
+        <div class="desktop-bar-shortcut" target="app-1">
+          <div class="desktop-bar-shortcut-icon">
+            <span class="material-symbols-outlined">
+              search
+            </span>
+          </div>
+          <div class="desktop-bar-shortcut-label">
+            App #1 
+          </div>
+        </div>
+        <div class="desktop-bar-shortcut" target="app-2">
+          <div class="desktop-bar-shortcut-icon">
+            <span class="material-symbols-outlined">
+              home
+            </span>
+          </div>
+          <div class="desktop-bar-shortcut-label">
+            App #2
+          </div>          
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
