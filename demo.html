@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="UInWeb.css" />
     <script src="UInWeb.js"></script>
     <script src="datatables.js"></script>
+    <link rel="stylesheet" href="datatables.css" />
     <script>
       async function showDevs() {
         const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -86,7 +87,7 @@
           </div>                      
         </div>
         <div class="client-area">          
-            <div id="devs-browser" class="window closed" style="width: 650px; height: 450px;">
+            <div id="devs-browser" class="window closed dialog" style="width: 942px; height: 688px;">
               <div class="title-bar">
                 <div class="caption">Data Viewer</div>
                 <div class="title-bar-button maximize"></div>
@@ -98,8 +99,9 @@
                     <div class="layout-horizontal">
                       DEVS
                     </div>
-                    <div class="layout-horizontal">
-                      <table id="example-table" class="widget widget-datatables">
+                    <div class="layout-horizontal" >
+                      <div class="widget widget-datatables" style="width: 800px; height: 500px;">
+                        <table id="example-table" class="widget widget-datatables">
                           <thead>
                               <tr>
                                   <th>ID</th>
@@ -139,7 +141,8 @@
                                   <td>Active</td>
                               </tr>
                           </tbody>
-                      </table>
+                        </table>
+                      </div>
                     </div>
                     <div class="layout-horizontal" style="width: 100%; justify-content: flex-end !important;">
                       <button>Unused #1</button>

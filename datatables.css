@@ -1,0 +1,14 @@
+.widget.widget-datatables {
+    overflow: auto;
+    border: 1px solid;
+    background-color: #c0c0c0;
+    color: #000000;
+    font-family: 'MS Sans Serif', Arial, sans-serif;
+    padding: 15px;        
+    box-shadow: 
+        inset 1px 1px 0px #000000,
+        inset -1px -1px 0px #ffffff,
+        inset 2px 2px 0px #808080,
+        inset -2px -2px 0px #dfdfdf;
+    overflow: auto;
+}

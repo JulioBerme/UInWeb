@@ -160,6 +160,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 1. Delegación para CLICS (Shortcuts, Cerrar, Maximizar)
   document.addEventListener('click', (e) => {
+    const windowEl = e.target.closest('.window');
+    if(windowEl) {
+      windowEl.style.zIndex = ++highestZIndex;
+    }
+
     // Abrir ventana desde el shortcut
     const shortcut = e.target.closest('.desktop-bar-shortcut');
     if (shortcut) {
@@ -173,8 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
         shortcut.style.display = 'none';
 
         // Traer al frente al abrir
-        highestZIndex++;
-        targetWindow.style.zIndex = highestZIndex;
+        targetWindow.style.zIndex = ++highestZIndex;
       }
       return;
     }
@@ -243,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 2. Cambiar cursor según el borde al mover el ratón
-  document.addEventListener('mousemove', (e) => {
+  document.addEventListener('mousemove', (e) => {    
     if (activeAction) return; 
     
     const windowEl = e.target?.closest('.window');
@@ -287,24 +291,10 @@ document.addEventListener('DOMContentLoaded', () => {
       Voff = areaEl.getBoundingClientRect().height - 2*areaEl.clientLeft
     }
 
-    // Traer la ventana al frente al hacer clic en cualquier parte de ella
-    highestZIndex++;
-    windowEl.style.zIndex = highestZIndex;
+    windowEl.style.zIndex = ++highestZIndex;
 
-    // Si está maximizada, cambiamos de estado, no permitir redimensionar ni arrastrar
     const minButton = windowEl.querySelector('.title-bar').querySelector('.title-bar-button.minimize')
-    if (minButton) {      
-      return
-      /*
-      if(e.target.closest('.title-bar-button')) {
-        return
-      } else {
-        windowEl.classList.remove('maximized')
-        minButton.classList.remove('minimize')
-        minButton.classList.add('maximize')        
-      }
-      */
-    }
+    if (minButton) return;
 
     const rect = windowEl.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -429,5 +419,25 @@ document.addEventListener('DOMContentLoaded', () => {
       activeAction.windowEl.style.cursor = 'default';
       activeAction = null;
     }
+  });  
+
+  window.addEventListener('blur', () => {
+      setTimeout(() => {
+          const elementoActivo = document.activeElement;
+                    
+          if (elementoActivo && elementoActivo.tagName === 'IFRAME') {
+              const windowEl = elementoActivo.closest('.window')
+
+              const eventClick = new MouseEvent('click', {
+                  view: window,
+                  bubbles: true,    
+                  cancelable: true, 
+                  clientX: 0,      
+                  clientY: 0       
+              });
+              
+              windowEl.dispatchEvent(eventClick);              
+          }
+      }, 0);
   });
 });
