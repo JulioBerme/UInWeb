@@ -495,7 +495,7 @@ html, body {
   left: 0;
 }
 
-.menu-bar > .menu-option:hover > .menu-box {
+.menu-bar > .menu-option.actived > .menu-box {
   display: block;
 }
 
@@ -505,7 +505,7 @@ html, body {
   z-index: 10100;
 }
 
-.menu-bar .menu-box .menu-option:hover > .menu-box {
+.menu-bar .menu-box .menu-option.actived > .menu-box {
   display: block;
 }
 
@@ -541,6 +541,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
+  flex: 1;
   overflow: auto;
   display: flex;
   justify-content: center;

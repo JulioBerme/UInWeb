@@ -126,10 +126,16 @@ Shortcuts to apps/windows appear inside the taskbar; these are layers with `.des
 
 ## Widgets
 
-Widgets are custom components; they are layers with the `.widget` class. To add these components, you must include a script that listens for the 'widget' event, which triggers when an element with `.widget` appears in the DOM. For example:
+Widgets are custom components; they are layers with the `.widget` class. To add these components, you must include a script that listens for the 'widget-generate' event, which triggers when an element with `.widget` appears in the DOM. For example:
 
-document.addEventListener('widget', (e) => {
+document.addEventListener('widget-generate', (e) => {
     /* we will have the widget in e.target */
+})
+
+To control size of widget when its container window changed its size you must listen for the event 'widget-resize', for example:
+
+window.addEventListener('widget-resize', (e) => {
+  resize(e.detail.element) // e.detail.element is the '.client-area' of the window that contains the widget.
 })
 
 ## Helpers

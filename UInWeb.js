@@ -118,7 +118,7 @@ function UInWeb_updateShortcutsVisibility() {
 function UInWeb_updateWidgets() {
   const widgets = document.querySelectorAll('.widget');
 
-  widgets.forEach(widget => widget.dispatchEvent(new CustomEvent('widget', { bubbles: true })));
+  widgets.forEach(widget => widget.dispatchEvent(new CustomEvent('widget-generate', { bubbles: true })));
 }
 
 document.addEventListener('DOMContentLoaded', () => {        
@@ -242,7 +242,25 @@ document.addEventListener('DOMContentLoaded', () => {
         windowEl.style.width = windowEl.dataset.prevWidth || '';
         windowEl.style.height = windowEl.dataset.prevHeight || '';
       }
+
+      window.dispatchEvent(new CustomEvent('widget-resize', { detail: { element: windowEl.querySelector('.client-area') } }));
+
       return;
+    }
+
+
+    const els = document.querySelectorAll('.menu-bar .actived');
+    els.forEach((el) => {
+      if(!el.contains(e.target) || e.target.children.length === 0) {
+        el.classList.remove('actived')
+      }
+    });    
+    const menuEl = e.target.closest('.menu-bar')
+    if(menuEl) {      
+      e.target.classList.add('actived')
+      if(!e.target.tabIndex) {
+        e.target.tabIndex = "0"
+      }
     }
   });
 
@@ -250,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('mousemove', (e) => {    
     if (activeAction) return; 
     
-    const windowEl = e.target?.closest('.window');
+    const windowEl = e.target.closest('.window');
     if (!windowEl) return;
     if(windowEl.classList.contains('maximized')) return;
     if(windowEl.classList.contains('dialog')) return;
@@ -361,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if(newTop+h > Voff) {
         newTop = Voff-h
       }
-
+'resize'
       if(newLeft < 0) {
         newLeft = 0
       }
@@ -407,6 +425,8 @@ document.addEventListener('DOMContentLoaded', () => {
       windowEl.style.height = `${newHeight}px`;
       windowEl.style.left = `${newLeft}px`;
       windowEl.style.top = `${newTop}px`;
+      
+      window.dispatchEvent(new CustomEvent('widget-resize', { detail: { element: windowEl.querySelector('.client-area') } }));              
     }
   });
 
@@ -421,23 +441,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });  
 
-  window.addEventListener('blur', () => {
-      setTimeout(() => {
-          const elementoActivo = document.activeElement;
-                    
-          if (elementoActivo && elementoActivo.tagName === 'IFRAME') {
-              const windowEl = elementoActivo.closest('.window')
+  window.addEventListener('blur', (e) => {
+    setTimeout(() => {        
+        const elementoActivo = document.activeElement;
+                  
+        if (elementoActivo && elementoActivo.tagName === 'IFRAME') {
+            const windowEl = elementoActivo.closest('.window')
 
-              const eventClick = new MouseEvent('click', {
-                  view: window,
-                  bubbles: true,    
-                  cancelable: true, 
-                  clientX: 0,      
-                  clientY: 0       
-              });
-              
-              windowEl.dispatchEvent(eventClick);              
-          }
-      }, 0);
+            const eventClick = new MouseEvent('click', {
+                view: window,
+                bubbles: true,    
+                cancelable: true, 
+                clientX: 0,      
+                clientY: 0       
+            });
+            
+            windowEl.dispatchEvent(eventClick);              
+        }
+    }, 0);
   });
 });
