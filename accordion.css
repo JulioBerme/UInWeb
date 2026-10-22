@@ -1,0 +1,42 @@
+.widget-accordion {
+    overflow: hidden;
+}
+.widget-accordion .widget-accordion-button,
+.widget-accordion .widget-accordion-content {
+    display: inline-block;
+    width: 100%;
+}
+
+.widget-accordion .widget-accordion-button {
+    background-color: #c0c0c0;
+    border: 1px solid  #808080;  
+}
+
+.widget-accordion .widget-accordion-button > .widget-accordion-button-caption,
+.widget-accordion .widget-accordion-button > .widget-accordion-button-arrow {
+    padding: 0.9em;
+}
+
+.widget-accordion .widget-accordion-button > .widget-accordion-button-caption {    
+    float: left;
+}
+
+.widget-accordion .widget-accordion-button > .widget-accordion-button-arrow {
+    float: right;
+}
+
+.widget-accordion.closed .widget-accordion-button > .widget-accordion-button-arrow::after {
+    content: "\25BC";
+}
+
+.widget-accordion.opened .widget-accordion-button > .widget-accordion-button-arrow::after {
+    content: "\25B2";
+}
+
+.widget-accordion.closed .widget-accordion-content {
+    display: none;
+}
+
+.widget-accordion.opened .widget-accordion-content {
+    display: inline-block;
+}

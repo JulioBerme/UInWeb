@@ -379,7 +379,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if(newTop+h > Voff) {
         newTop = Voff-h
       }
-'resize'
       if(newLeft < 0) {
         newLeft = 0
       }
@@ -460,4 +459,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 0);
   });
+
+  window.addEventListener('resize', (e) => {
+    document.querySelectorAll('.widget').forEach((el) => {
+      window.dispatchEvent(new CustomEvent('widget-resize', { detail: { element: el.closest('.client-area') } }));      
+    })
+  })
 });
