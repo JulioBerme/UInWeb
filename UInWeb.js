@@ -160,8 +160,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 1. Delegación para CLICS (Shortcuts, Cerrar, Maximizar)
   document.addEventListener('click', (e) => {
-    const windowEl = e.target.closest('.window');
-    if(windowEl) {
+    let windowEl = e.target.closest('.window'), parentWindowEl;
+    
+    if(windowEl) {      
+      do {
+        parentWindowEl = windowEl.parentNode?.closest('.window');           
+        if(parentWindowEl) {
+          windowEl = parentWindowEl;
+        }
+      } while(parentWindowEl);
+      
       windowEl.style.zIndex = ++highestZIndex;
     }
 

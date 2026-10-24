@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="tabulator.css" />
     <script src="accordion.js"></script>
     <link rel="stylesheet" href="accordion.css" />
+    <script src="tabs.js"></script>
+    <link rel="stylesheet" href="tabs.css" />    
     <script>
       async function showDevs() {
         const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -52,7 +54,7 @@
           <div class="title-bar-button close"></div>
         </div>
         <div class="client-area">
-          <iframe src="https://es.wikipedia.org/wiki/Wikipedia:Portada" style="width: 100%; height: 100%;"></iframe>
+          <!-- <iframe src="https://es.wikipedia.org/wiki/Wikipedia:Portada" style="width: 100%; height: 100%;"></iframe> -->
         </div>
       </div>
       
@@ -91,112 +93,130 @@
           </div>                      
         </div>
         <div class="client-area">          
-            <div id="devs-browser" class="window closed" style="min-width: 942px; min-height: 800px;">
+            <div id="devs-browser" class="window closed" style="min-width: 942px; height: 500px;">
               <div class="title-bar">
                 <div class="caption">Data Viewer</div>
                 <div class="title-bar-button maximize"></div>
                 <div class="title-bar-button close"></div>
               </div>
-              <div class="client-area">              
-                <div class="widget widget-accordion closed" data-caption="DEVS">
-                  <div class="">
-                    <div class="layout-vertical">
-                      <div class="layout-horizontal">                      
-                        <div class="layout-vertical">
-                          <div class="layout-horizontal">
-                            DEVS
-                          </div>
-                          <div class="layout-horizontal">
-                            <div class="widget widget-tabulator" data-pw="90" data-ph="75" style="min-width: 800px; min-height: 500px;">
-                              <table id="devs-table">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Departamnt</th>
-                                        <th>State</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>001</td>
-                                        <td>Ana Gómez</td>
-                                        <td>Frontend Dev</td>
-                                        <td>Tech</td>
-                                        <td>Active</td>
-                                    </tr>
-                                    <tr>
-                                        <td>002</td>
-                                        <td>Carlos Pérez</td>
-                                        <td>Designer UX/UI</td>
-                                        <td>Design</td>
-                                        <td>Active</td>
-                                    </tr>
-                                    <tr>
-                                        <td>003</td>
-                                        <td>María Rodríguez</td>
-                                        <td>Proyect Manager</td>
-                                        <td>Management</td>
-                                        <td>Holydays</td>
-                                    </tr>
-                                    <tr>
-                                        <td>004</td>
-                                        <td>Juan López</td>
-                                        <td>DevOps</td>
-                                        <td>Tech</td>
-                                        <td>Active</td>
-                                    </tr>
-                                </tbody>
-                              </table>
+              <div class="client-area">
+                <div class="widget widget-tabs">
+                  <div class="widget-tabs-items active" data-target="tab-a">
+                    TAB A
+                  </div>
+                  <div class="widget-tabs-items" data-target="tab-b">
+                    TAB B
+                  </div>                  
+                </div>                              
+                <div class="widget-tabs-content" id="tab-a">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipiscing elit ac ullamcorper, pellentesque integer mollis euismod bibendum fringilla vestibulum venenatis consequat, vel habitant pulvinar suspendisse cursus luctus taciti torquent. Parturient tempus magnis potenti primis lacinia dignissim nascetur felis est, dapibus curabitur cum rhoncus rutrum ullamcorper quam mauris, tellus vel a platea nunc iaculis ornare dis. Malesuada turpis fringilla risus rhoncus aliquam imperdiet ultricies suscipit commodo habitant iaculis, sociis parturient nunc class bibendum pellentesque congue facilisis aliquet interdum, purus semper mauris sed integer habitasse eu tempus eleifend gravida.
+                  </p>
+                  <p>
+                    Purus gravida urna nostra scelerisque, at lectus venenatis quis parturient, pharetra tempor arcu. Congue nulla sociosqu placerat cursus euismod porta molestie proin vel phasellus, fringilla vestibulum nec scelerisque blandit quis turpis rhoncus platea, mauris dictum dui donec consequat dis convallis iaculis torquent. Laoreet egestas curae in neque fringilla mi scelerisque at sollicitudin, et turpis malesuada leo volutpat parturient lacinia nullam eget facilisis, cras vel magna blandit suscipit euismod non tellus.
+                  </p>
+                </div>
+                <div class="widget-tabs-content" id="tab-b" style="width: 100%;">
+                  <div class="widget widget-accordion closed" data-caption="DEVS">
+                    <div class="">
+                      <div class="layout-vertical">
+                        <div class="layout-horizontal">                      
+                          <div class="layout-vertical">
+                            <div class="layout-horizontal">
+                              DEVS
                             </div>
-                          </div>
-                        </div>                      
-                      </div>                    
-                      <div class="layout-horizontal" style="width: 100%; justify-content: flex-end !important;">
-                        <button>Unused #1</button>
-                        <button>Unused #2</button>
+                            <div class="layout-horizontal">
+                              <div class="widget widget-tabulator" data-pw="90" data-ph="75" style="min-width: 800px; min-height: 500px;">
+                                <table id="devs-table">
+                                  <thead>
+                                      <tr>
+                                          <th>ID</th>
+                                          <th>Name</th>
+                                          <th>Position</th>
+                                          <th>Departamnt</th>
+                                          <th>State</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <td>001</td>
+                                          <td>Ana Gómez</td>
+                                          <td>Frontend Dev</td>
+                                          <td>Tech</td>
+                                          <td>Active</td>
+                                      </tr>
+                                      <tr>
+                                          <td>002</td>
+                                          <td>Carlos Pérez</td>
+                                          <td>Designer UX/UI</td>
+                                          <td>Design</td>
+                                          <td>Active</td>
+                                      </tr>
+                                      <tr>
+                                          <td>003</td>
+                                          <td>María Rodríguez</td>
+                                          <td>Proyect Manager</td>
+                                          <td>Management</td>
+                                          <td>Holydays</td>
+                                      </tr>
+                                      <tr>
+                                          <td>004</td>
+                                          <td>Juan López</td>
+                                          <td>DevOps</td>
+                                          <td>Tech</td>
+                                          <td>Active</td>
+                                      </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>                      
+                        </div>                    
+                        <div class="layout-horizontal" style="width: 100%; justify-content: flex-end !important;">
+                          <button>Unused #1</button>
+                          <button>Unused #2</button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div class="widget widget-accordion opened" data-caption="ANALYSTS">
-                  <div class="">
-                    <div class="layout-vertical">
-                      <div class="layout-horizontal">                      
-                        <div class="layout-vertical">
-                          <div class="layout-horizontal">
-                            DEVS
-                          </div>
-                          <div class="layout-horizontal">
-                            <div class="widget widget-tabulator" data-pw="90" data-ph="75" style="min-width: 800px; min-height: 500px;">
-                              <table id="analysts-table">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Departamnt</th>
-                                        <th>State</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>005</td>
-                                        <td>Pepito Pepitez</td>
-                                        <td>Functional Analyst</td>
-                                        <td>Analysis</td>
-                                        <td>Active</td>
-                                    </tr>
-                                </tbody>
-                              </table>
+                  </div>                
+                  <div class="widget widget-accordion closed" data-caption="ANALYSTS">
+                    <div class="">
+                      <div class="layout-vertical">
+                        <div class="layout-horizontal">                      
+                          <div class="layout-vertical">
+                            <div class="layout-horizontal">
+                              DEVS
                             </div>
-                          </div>
-                        </div>                      
-                      </div>                    
-                      <div class="layout-horizontal" style="width: 100%; justify-content: flex-end !important;">
-                        <button>Unused #1</button>
-                        <button>Unused #2</button>
+                            <div class="layout-horizontal">
+                              <div class="widget widget-tabulator" data-pw="90" data-ph="75" style="min-width: 800px; min-height: 500px;">
+                                <table id="analysts-table">
+                                  <thead>
+                                      <tr>
+                                          <th>ID</th>
+                                          <th>Name</th>
+                                          <th>Position</th>
+                                          <th>Departamnt</th>
+                                          <th>State</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <td>005</td>
+                                          <td>Pepito Pepitez</td>
+                                          <td>Functional Analyst</td>
+                                          <td>Analysis</td>
+                                          <td>Active</td>
+                                      </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>                      
+                        </div>                    
+                        <div class="layout-horizontal" style="width: 100%; justify-content: flex-end !important;">
+                          <button>Unused #1</button>
+                          <button>Unused #2</button>
+                        </div>
                       </div>
                     </div>
                   </div>
