@@ -167,10 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
         parentWindowEl = windowEl.parentNode?.closest('.window');           
         if(parentWindowEl) {
           windowEl = parentWindowEl;
+          windowEl.style.zIndex = ++highestZIndex;
         }
       } while(parentWindowEl);
-      
-      windowEl.style.zIndex = ++highestZIndex;
     }
 
     // Abrir ventana desde el shortcut
