@@ -1,3 +1,7 @@
+let highestZIndex = 1; // Contador global para el orden de capas
+let activeAction = null; // Almacena el estado actual de arrastre o redimensionado
+const edgeSize = 8; // Grosor en píxeles del borde interactivo para redimensionar
+
 function UInWeb_openWindow(id) {
   function UInWeb_centerWindow(windowEl) {    
       if (!windowEl) return
@@ -20,6 +24,7 @@ function UInWeb_openWindow(id) {
       windowEl.style.position = 'absolute';
       windowEl.style.left = `${newLeft}px`;
       windowEl.style.top = `${newTop}px`;
+      windowEl.style.zIndex = ++highestZIndex;
   }
 
   const windowEl = document.querySelector('#'+id)
@@ -153,10 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observer.observe(document.body, { childList: true, subtree: true });
   });      
-
-  let highestZIndex = 1; // Contador global para el orden de capas
-  let activeAction = null; // Almacena el estado actual de arrastre o redimensionado
-  const edgeSize = 8; // Grosor en píxeles del borde interactivo para redimensionar
 
   // 1. Delegación para CLICS (Shortcuts, Cerrar, Maximizar)
   document.addEventListener('click', (e) => {

@@ -1,0 +1,60 @@
+.widget-panels-horizontal,
+.widget-panels-vertical {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+}
+
+.widget-panel-left,
+.widget-panel-right {
+    height: 100%;
+    overflow: auto;
+    background-color: #c0c0c0;
+}    
+
+.widget-panel-left {
+    min-width: 10%;
+    max-width: 90%;
+}
+
+.widget-panel-right {    
+    flex: 1;    
+}
+
+.widget-panel-horizontal-resistor {
+    width: 0.11em;
+    height: 100%;
+    background-color: #c0c0c0;
+    cursor: ew-resize;
+    border-right: 0.125em solid #000000;
+    border-left: 0.125em solid #ffffff;
+}
+
+.widget-panels-vertical {
+    flex-direction: column;
+}
+.widget-panel-top,
+.widget-panel-bottom {
+    width: 100%;
+    overflow: auto;
+    background-color: #c0c0c0;
+}    
+
+.widget-panel-top {
+    min-height: 10%;
+    max-height: 90%;
+}
+
+.widget-panel-bottom {    
+    flex: 1;    
+}
+
+.widget-panel-vertical-resistor {
+    height: 0.11em;
+    width: 100%;
+    background-color: #c0c0c0;
+    cursor: ns-resize;
+    border-bottom: 0.125em solid #000000;
+    border-top: 0.125em solid #ffffff;
+}
