@@ -1,0 +1,61 @@
+:root {
+  --ss-bg-color: #c0c0c0;            /* Gris clásico de ventana */
+  --ss-font-color: #000000;          /* Texto negro puro */
+  --ss-border-color: #000000;        /* Borde exterior negro */
+  --ss-border-radius: 0px;           /* 100% Cuadrado */
+  --ss-primary-color: #000080;       /* Azul marino de selección */
+  --ss-font-placeholder-color: #808080;
+  --ss-spacing: 0.25em;
+}
+
+.ss-main {
+  color: #000000;
+  background-color: #ffffff;
+  
+  border-top: 0.125em solid #808080;
+  border-left: 0.125em solid #808080;
+  border-right: 0.125em solid #ffffff;
+  border-bottom: 0.125em solid #ffffff;
+  box-shadow: inset -0.06px -0.06px 0px #c0c0c0, inset 0.06px 0.06px 0px #000000;
+  
+  border-radius: 0;
+  outline: none;
+  cursor: pointer;  
+}
+
+.ss-content {
+  border-top: 0.125em solid #ffffff !important;
+  border-left: 0.125em solid #ffffff !important;
+  border-right: 0.125em solid #808080 !important;
+  border-bottom: 0.125em solid #808080 !important;
+  background-color: #c0c0c0 !important;
+  box-shadow: 0.125em 0.125em 0px #000000 !important; /* Sombra sólida dura sin desenfoque */
+  font-family: 'MS Sans Serif', Arial, sans-serif !important; 
+}
+
+.ss-content .ss-list .ss-option {
+  color: #000000 !important;
+  padding: 0.25em 0.5em !important;
+}
+
+.ss-content .ss-list .ss-option:hover,
+.ss-content .ss-list .ss-option.ss-highlighted {
+  background-color: #000080 !important;
+  color: #ffffff !important;
+}
+
+.ss-main:focus,
+.ss-main:focus-within,
+.ss-main.ss-open,
+.ss-main.ss-focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.ss-main.ss-open,
+.ss-main.ss-focus {
+  border-top: 0.125em solid #808080 !important;
+  border-left: 0.125em solid #808080 !important;
+  border-right: 0.125em solid #ffffff !important;
+  border-bottom: 0.125em solid #ffffff !important;
+}

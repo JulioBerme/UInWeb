@@ -1,14 +1,13 @@
 .widget.widget-tabulator {
     overflow: auto;
-    border: 1px solid;
+    border: 0.06em solid;
     background-color: #c0c0c0;
     color: #000000;
-    font-family: 'MS Sans Serif', Arial, sans-serif;
-    padding: 15px;        
+    padding: 0.9px;        
     box-shadow: 
-        inset 1px 1px 0px #000000,
-        inset -1px -1px 0px #ffffff,
-        inset 2px 2px 0px #808080,
-        inset -2px -2px 0px #dfdfdf;
+        inset 0.06em 0.06em 0px #000000,
+        inset -0.06em -0.06em 0px #ffffff,
+        inset 0.125em 0.125em 0px #808080,
+        inset -0.125em -0.125em 0px #dfdfdf;
     overflow: auto;
 }

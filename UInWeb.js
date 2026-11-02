@@ -2,6 +2,26 @@ let highestZIndex = 1; // Contador global para el orden de capas
 let activeAction = null; // Almacena el estado actual de arrastre o redimensionado
 const edgeSize = 8; // Grosor en píxeles del borde interactivo para redimensionar
 
+function UInWeb_stateHandler(initialState, renderCallback) {
+  class StateManager {
+    constructor(initialState, renderCallback) {
+      this.state = new Proxy(initialState, {
+          set: (target, property, value) => {
+              target[property] = value;
+
+              renderCallback(target);
+
+              return true;
+          }
+      });
+      
+      renderCallback(initialState);
+    }
+  }
+  
+  return new StateManager(initialState, renderCallback);
+}
+
 function UInWeb_openWindow(id) {
   function UInWeb_centerWindow(windowEl) {    
       if (!windowEl) return

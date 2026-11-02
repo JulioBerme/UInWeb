@@ -30,7 +30,7 @@ html, body {
   border-right: 0.125em solid #000000;
   border-bottom: 0.125em solid #000000;        
   font-family: "MS Sans Serif", Arial, sans-serif;
-  font-size: 18px; 
+  font-size: 14px; 
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -363,19 +363,45 @@ html, body {
     outline-offset: -4px;
 }
 
+.client-area select {
+  color: #000000;
+  background-color: #ffffff;
+  
+  border-top: 0.125em solid #808080;
+  border-left: 0.125em solid #808080;
+  border-right: 0.125em solid #ffffff;
+  border-bottom: 0.125em solid #ffffff;
+  box-shadow: inset -1px -1px 0px #c0c0c0, inset 1px 1px 0px #000000;
+  
+  border-radius: 0;
+  outline: none;
+  cursor: ponter;
+}
+
+.client-area select option {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;  
+  border-radius: 0 !important;
+  -webkit-border-radius: 0px !important;
+}
+
+.client-area select:focus {
+  outline: 0.06em dotted #000000;
+  outline-offset: -0.25em;
+}
+
 .client-area button {
     background-color: #c0c0c0;
     color: #000000;
     font-family: 'MS Sans Serif', Arial, sans-serif;
-    font-size: 12px;
+    /* font-size: 12px; */
     padding: 4px 12px;
     cursor: pointer;
     
-    /* Bordes biselados clásicos */
     border: 2px solid;
     border-color: #ffffff #808080 #808080 #ffffff;
-    
-    /* Evita estilos por defecto del navegador */
+        
     outline: none;
 }
 
@@ -399,7 +425,7 @@ html, body {
   background-color: #ffffff; 
   color: #000000;
   font-family: 'MS Sans Serif', Arial, sans-serif;
-  font-size: 12px;
+  /* font-size: 12px; */
   padding: 3px 5px;        
   border: 2px solid;
   border-color: #808080 #ffffff #ffffff #808080;        
@@ -422,7 +448,7 @@ html, body {
   border-collapse: collapse;  
   background-color: #c0c0c0;  
   font-family: 'MS Sans Serif', Arial, sans-serif;
-  font-size: 12px;
+  /* font-size: 12px; */
   color: #000000;  
   border-top: 1px solid #ffffff;
   border-left: 1px solid #ffffff;
